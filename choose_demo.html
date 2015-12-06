@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>小黑板助手</title>
+<style>
+input[type=checkbox] {
+
+ -ms-transform: scale(1.1); /* IE */
+ -moz-transform: scale(1.1); /* FF */
+ -webkit-transform: scale(1.1); /* Safari and Chrome */
+ -o-transform: scale(1.1); /* Opera */
+  padding: 10px;
+}
+</style>
+</head>
+<body>
+<h2>
+Lily英语 · 小黑板助手
+</h2>
+
+<p>
+这里是 <span id="classnid" style="color:red">默认班级</span> 班级的小黑板。
+</p>
+
+<p>
+<div>
+请选择现在要进行的榜单挑选：
+<form>
+	<input type="radio" name="list_radio" value="gold" checked onclick="switch_board(this);"/> 金牌榜
+	<input type="radio" name="list_radio" value="silver"  onclick="switch_board(this);"/> 银牌榜
+	<input type="radio" name="list_radio" value="progress" onclick="switch_board(this);"/> 进步榜
+	<input type="radio" name="list_radio" value="bronze"  onclick="switch_board(this);"/> 铜牌榜
+	<input type="radio" name="list_radio" value="absent"  onclick="switch_board(this);"/> 未出席
+</form>
+</div>
+<p>
+你现在正在挑选 <span id="radio_status" style="color:red">gold(默认勾选)</span> 榜单的宝贝，你可以新加勾选和取消勾选。
+</p>
+下面是该榜单已经勾选的宝贝儿：
+<p>
+<div id = "chosen_list" style="border:  double rgb(0,0,0); font-size: 110%;"></div>
+</p>
+<p>
+下面是目前从未选择过的宝贝儿：
+<div id = "unchosen_list" style="border:  double rgb(0,0,0);font-size: 110%;"></div>
+</p>
+
+<!-- 
+<p>
+确认以上的修改：<button onclick="confirm_edit();">确定</button>
+，恢复到刚才的勾选状态：<button onclick="">恢复</button>
+</p>
+-->
+
+
+<hr>
+当前已选结果:
+<div style="border: medium double rgb(250,0,255)">
+<div>金牌榜名单：<span id="gold_board"></span></div>
+<div>银牌榜名单：<span id="silver_board"></span></div>
+<div>进步牌榜名单：<span id="progress_board"></span></div>
+<div>铜牌榜名单：<span id="bronze_board"></span></div>
+<div>未出席名单：<span id="absent_board"></span></div>
+</div>
+<p>
+确认并输出当前的小黑板： <button onclick="output();">输出</button>
+</p>
+
+
+<footer>
+  <p>Any question, pls contact: <a href="mailto:lu.dev@outlook.com">
+  lu.dev@outlook.com</a>.</p>
+</footer>
+<hr>
+下面是调试区域
+
+<script src="process.js"></script>
+</body>
+</html>
