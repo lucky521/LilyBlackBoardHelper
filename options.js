@@ -1,6 +1,7 @@
 ﻿// Saves options to localStorage.
 
 // check if newUrl has been in the localStorage
+/*
 function checkExisted(newUrl){
 	var num = localStorage["count"];
 	for(var i=0; i< parseInt(num); ++i){
@@ -168,3 +169,5 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	window.addEventListener('load', repaint_options_page);
 });
+
+*/

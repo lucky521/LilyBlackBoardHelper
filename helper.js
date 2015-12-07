@@ -47,7 +47,7 @@ window.onload = function()
 
 	if(all_name_list.length == 0)
 	{
-		alert("当前请先使用最下方的手工名单录入.");
+		alert("当前小助手版本请使用最下方的手工名单录入.");
 	}
 
 }
@@ -60,13 +60,34 @@ function switch_board(cur_radio)
  	confirm_edit();
 
  	// switch
- 	document.getElementById("radio_status").innerHTML = cur_radio;
- 	if(cur_radio == "gold")	current_radio_value = 0;
- 	else if(cur_radio == "silver") current_radio_value = 1;
- 	else if(cur_radio == "progress") current_radio_value = 2;
- 	else if(cur_radio == "bronze") current_radio_value = 3;
- 	else if(cur_radio == "absent") current_radio_value = 4;
- 	else console.log("Error!");
+ 	//document.getElementById("radio_status").innerHTML = cur_radio;
+ 	if(cur_radio == "gold")	
+ 	{
+ 		current_radio_value = 0;
+ 		document.getElementById("radio_status").innerHTML = "金牌";
+ 	}
+ 	else if(cur_radio == "silver") 
+ 	{
+ 		current_radio_value = 1;
+ 		document.getElementById("radio_status").innerHTML = "银牌";
+ 	}
+ 	else if(cur_radio == "progress") 
+ 	{
+ 		current_radio_value = 2;
+ 		document.getElementById("radio_status").innerHTML = "进步";
+ 	}
+ 	else if(cur_radio == "bronze") 
+ 	{
+ 		current_radio_value = 3;
+ 		document.getElementById("radio_status").innerHTML = "铜牌";
+ 	}
+ 	else if(cur_radio == "absent") 
+ 	{
+ 		current_radio_value = 4;
+ 		document.getElementById("radio_status").innerHTML = "缺席";
+ 	}
+ 	else 
+ 		console.log("Error!");
 
  	// display 
  	list_chosen_list();
@@ -276,7 +297,8 @@ function preview()
 	console.log("preview");
 	if(all_name_list.length == 0)
 	{
-		alert("请先使用最下方的手工名单录入.");
+		alert("请先使用页面最下方的手工录入输入本班宝贝名单.");
+		return;
 	}
 
 	confirm_edit();

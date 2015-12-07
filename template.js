@@ -12,7 +12,7 @@
 function download(){
 
 	console.log("download");
-
+	/*
 	saveAs(
       new Blob(
           [(new XMLSerializer).serializeToString(document)])
@@ -26,6 +26,7 @@ function download(){
     )
     , "preview.xhtml"
 	);
+	*/
 }
 
 // replace template elements from localStorage

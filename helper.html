@@ -2,6 +2,7 @@
 <html>
 <head>
 <title>小黑板助手</title>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 <style>
 input[type=checkbox] {
 
@@ -35,7 +36,7 @@ Lily英语 · 小黑板助手
 </form>
 </div>
 <p>
-你现在正在挑选 <span id="radio_status" style="color:red">gold(默认勾选)</span> 榜单的宝贝，你可以新加勾选和取消勾选。下框中是该榜单已经勾选的宝贝儿：
+你现在正在挑选 <span id="radio_status" style="color:red">金牌(默认勾选)</span> 榜单的宝贝，你可以新加勾选和取消勾选。下框中是该榜单已经勾选的宝贝儿：
 </p>
 
 <p>
@@ -64,16 +65,14 @@ Lily英语 · 小黑板助手
 </div>
 <p>
 查看最新版小黑板： <button id="preview_btn">预览</button>
+<br>注意：预览页面的文字当前仅用于预览，上榜理由等内容均为样例！
 </p>
 
 
-<footer>
-  <p>Any question, pls contact: <a href="mailto:lu.dev@outlook.com">
-  lu.dev@outlook.com</a>.</p>
-</footer>
+
 <hr>
 目前自动获取输入功能尚未开发，你可以将全班名单输入下框，然后点击手工录入按钮。<br>
-录入格式样例:"田欣宁(Candy1) 陈梓盈(CoCo) 常桐溪(Nichole) 王凯伊(Cathy)"，两个名字之间以一个空格隔开。
+录入格式样例:"田欣宁(Candy1) 陈梓盈(CoCo) 常桐溪(Nichole) 王凯伊(Cathy)"，两个名字之间以一个空格隔开，一个名字内部不能有空格。<br>请严格按照格式样例输入。录入后在上方未选择宝贝名单中确认录入是否正确。
 <p>
 <input type="text" name="manual_input" id="m_input" size="100">
 </p>
@@ -81,7 +80,10 @@ Lily英语 · 小黑板助手
 <button id="manual_input_btn">手工录入</button>
 </p>
 
-
-
+<hr>
+<footer>
+  <p>Any question, pls contact: <a href="mailto:lu.dev@outlook.com">
+  lu.dev@outlook.com</a>.</p>
+</footer>
 </body>
 </html>
