@@ -1,3 +1,9 @@
+if(!localStorage["lily"])
+{
+	alert("小助手当前并不运行在Chrome插件状态！");
+}
+
+
 // global value
 current_radio_value = 0;
 all_name_list = new Array();
@@ -8,15 +14,42 @@ progress_list = new Array();
 bronze_list = new Array();
 absent_list = new Array();
 
+//original_array = ['田欣宁(Candy1)','陈梓盈(CoCo)','常桐溪(Nichole)','王凯伊(Cathy)','杨熙之(Sam)','刘子煊(Candy2)','沈僖卓(Lion)','杨明仪(Lucy)','赵心悦(Claier)','贺悦宸(David)','韩雨恒(Tommy)','陈若依(Eva)','陈锐恒(Henry)','田思垚(Emily)','杨俊妍(Angela)','刘昀奕(Amy)','余浩洋(Jason','Yu)','张文硕(Andy)','裴效源(Perry)','傅子睿(Tony)','欧阳丝雨(Sissie)','王嘉悦(Dora)','赵天翔(Jimmy)','连翊萱(Angel)'];
+//console.log("all_name_list length: " + original_array.length)
+
+window.onload = function()
 {
-// fake init
-	var i;
-	for(i=0;i<20;i++)
-		all_name_list.push("宝贝"+ i);
-	//console.log("init all name" + all_name_list);
+	console.log(document.title);
+
+
+	//all_name_list = original_array;
+/*
+	{
+	// fake init
+		var i;
+		for(i=0;i<10;i++)
+			all_name_list.push("宝贝"+ i);
+	}
+*/
+
 	left_list = all_name_list;// 应该是deep copy
 	list_chosen_list();
 	list_left_list();
+	document.getElementById("preview_btn").addEventListener("click", preview);
+	document.getElementById("radio_gold").addEventListener("click", function(){switch_board("gold")});
+	document.getElementById("radio_silver").addEventListener("click", function(){switch_board("silver")});
+	document.getElementById("radio_progress").addEventListener("click", function(){switch_board("progress")});
+	document.getElementById("radio_bronze").addEventListener("click", function(){switch_board("bronze")});
+	document.getElementById("radio_absent").addEventListener("click", function(){switch_board("absent")});
+
+	document.getElementById("manual_input_btn").addEventListener("click", read_from_textbox);
+
+
+	if(all_name_list.length == 0)
+	{
+		alert("当前请先使用最下方的手工名单录入.");
+	}
+
 }
 
 
@@ -27,13 +60,12 @@ function switch_board(cur_radio)
  	confirm_edit();
 
  	// switch
- 	value = cur_radio.value;
- 	document.getElementById("radio_status").innerHTML = value;
- 	if(value == "gold")	current_radio_value = 0;
- 	else if(value == "silver") current_radio_value = 1;
- 	else if(value == "progress") current_radio_value = 2;
- 	else if(value == "bronze") current_radio_value = 3;
- 	else if(value == "absent") current_radio_value = 4;
+ 	document.getElementById("radio_status").innerHTML = cur_radio;
+ 	if(cur_radio == "gold")	current_radio_value = 0;
+ 	else if(cur_radio == "silver") current_radio_value = 1;
+ 	else if(cur_radio == "progress") current_radio_value = 2;
+ 	else if(cur_radio == "bronze") current_radio_value = 3;
+ 	else if(cur_radio == "absent") current_radio_value = 4;
  	else console.log("Error!");
 
  	// display 
@@ -90,6 +122,10 @@ function list_chosen_list()
 		*/
 		chosen_tmp.appendChild(dataSpan);
 	}
+	if(display_list.length == 0)
+	{
+		chosen_tmp.innerHTML = "当前为空";	
+	}
 	
 
 }
@@ -127,6 +163,14 @@ function confirm_edit()
 	var new_board_list = new Array();
 	var new_left_list = new Array();
 	var chosen = document.getElementById("chosen_list").children;
+	var unchosen = document.getElementById("unchosen_list").children;
+
+	if(chosen.length == 0 && unchosen.length == 0)
+	{
+		console.log("confirm_edit with empty display.")
+		return;
+	}
+
 	for(var i=0;i<chosen.length;i++)
 	{
 		if(chosen[i].children[1].checked == true)
@@ -137,7 +181,6 @@ function confirm_edit()
 			new_left_list.push(chosen[i].children[0].innerHTML);
 		}
 	}
-	var unchosen = document.getElementById("unchosen_list").children;
 	for(var i=0;i<unchosen.length;i++)
 	{
 		if(unchosen[i].children[1].checked == true)
@@ -227,8 +270,45 @@ function update_boards()
 	}
 }
 
-function output()
+
+function preview()
 {
+	console.log("preview");
+	if(all_name_list.length == 0)
+	{
+		alert("请先使用最下方的手工名单录入.");
+	}
+
+	confirm_edit();
+	if(left_list.length > 0)
+	{
+		var ask = confirm("未勾选的宝贝儿: " + left_list + ".\n\n要将他们都放入银牌榜吗？");
+		if (ask == true) {
+		    silver_list = silver_list.concat(left_list);
+		} else {
+		    return;
+		}
+	}
+	localStorage["all_name_list"] = all_name_list;
+	localStorage["gold_list"]  = gold_list;
+	localStorage["silver_list"]  = silver_list;
+	localStorage["progress_list"]  = progress_list;
+	localStorage["bronze_list"]  = bronze_list;
+	localStorage["absent_list"]  = absent_list;
+	window.open('template.html');
+}
 
 
+function read_from_textbox()
+{
+	var minput_str = document.getElementById("m_input").value;
+	var minput_array = minput_str.split(" ");
+	all_name_list = minput_array;
+	console.log("手工录入：" + all_name_list + "  " + all_name_list.length);
+	//console.log("minput_str：" + minput_str);
+	var minput_array2 = minput_str.split(" ");
+	left_list = minput_array2;
+	console.log("手工录入：" + left_list + "  " + left_list.length);
+
+	switch_board("gold");
 }

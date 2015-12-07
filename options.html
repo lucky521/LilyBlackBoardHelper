@@ -1,0 +1,98 @@
+﻿<!doctype html>
+<html>
+<head><title>Options</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="options.js"></script>
+</head>
+
+<body>
+<h1>
+	<img src="images/icon-128.png" alt="Toast">
+	配置页面 - Lily英语小黑板助手
+</h1>
+<p>
+<font size="2" face="Verdana" color="blue">Sometimes you don't even realize that you have been distracted by social-networking websites.  Believe it or not, have a try!
+</font>
+</p>
+<form id="options">
+<h2>
+Set Redirect URL
+</h2>
+	<p>Current Redirect URL :<label id="default_redirectUrl"></label></p>
+	<p>Change Redirect URL to : <input type="text" id="redirectUrl"></p>
+	<p>
+	<button id="btn_save_redirectUrl">Save</button>
+	<button id="btn_todefault_url">Default</button>
+	</p>
+
+<h2>
+Set Block Time
+</h2>
+	<p>Current Block Time : From&nbsp;
+	<label id="default_starttime"></label>:00
+	&nbsp;To&nbsp;
+	<label id="default_endtime"></label>:00</p>
+	<p>Set new Block Time : From	
+			<select id="starttime">
+			<option value="2" selected="selected">02:00</option>
+			<option value="4">04:00</option>
+			<option value="6">06:00</option>
+			<option value="8">08:00</option>
+			<option value="10">10:00</option>
+			<option value="12">12:00</option>
+			<option value="14">14:00</option>
+			<option value="16">16:00</option>
+			<option value="18">18:00</option>
+			<option value="20">20:00</option>
+			<option value="22">22:00</option>
+			<option value="24">24:00</option>			
+		</select>
+	To	
+			<select id="endtime">
+			<option value="2">02:00</option>
+			<option value="4">04:00</option>
+			<option value="6">06:00</option>
+			<option value="8">08:00</option>
+			<option value="10">10:00</option>
+			<option value="12">12:00</option>
+			<option value="14">14:00</option>
+			<option value="16">16:00</option>
+			<option value="18">18:00</option>
+			<option value="20">20:00</option>
+			<option value="22" selected="selected">22:00</option>
+			<option value="24">24:00</option>			
+		</select>
+	</p>
+	<p>
+	<button id="btn_save_blocktime">Save</button>
+	<button id="btn_todefault_time">Default</button>
+	</p>
+
+
+<h2>
+Add new Block URL
+</h2>	
+	<p>Add a Block URL:
+	<input type="text" id="blockUrl">
+	</p>
+	<p>You can input a complete website URL like "www.sina.com" or just the keyword like "sina".</p>
+	<p>
+	<button id="btn_save_newurl">Save</button>
+	</p>
+<h2>
+Remove a Block URL
+</h2>
+Current Block URL List as below, there are&nbsp;&nbsp;<label id="listnum"></label>&nbsp; URL(s) now.<br>
+<select id="currenturllist" multiple="multiple" size=10 >
+  <option value ="volvo">https://www.google.com.hk</option>
+</select>
+
+	<p>Select Block URLs above to remove, You can choose each time more than one.</p>
+	<p>
+	<button id="btn_save_removeurl">Save</button>
+	<button id="btn_clearall">Remove all</button>
+	</p>
+
+</form>
+</body>
+</html>
